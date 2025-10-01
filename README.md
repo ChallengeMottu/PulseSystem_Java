@@ -33,6 +33,15 @@ das motos no espaço.
 
 ---
 
+## 💡 Associação de Beacons
+
+Além de um CRUD integrado para controle das entidades, temos uma funcionalidade
+exclusiva do sistema e muito importante para o seu funcionamento: a associação entre Beacons e Motos.
+
+Essa simples associação permite a identificação da moto por meio do sinal Bluetooth do dispositivo.
+
+---
+
 ### 📝 Migrations
 Ao total o projeto possui 6 migrations, que envolvem criação das tabelas no banco H2 e inserção de dados iniciais, como
 por exemplo, inserção de 3 usuários, cada um de um perfil diferente, para facilitar entrada no sistema.
@@ -62,30 +71,36 @@ O sistema já vem com alguns usuários para teste:
 
 ## ▶️ Como rodar o projeto
 
-1. Clone o repositório:
+**1. Clone o repositório:**
 ```bash
 git clone https://github.com/ChallengeMottu/PulseSystem_Java.git
 cd PulseSystem_Java
 ```
 
-2. Abra o projeto em alguma IDE
+**2. Abra o projeto em alguma IDE**
 
-3. Execute a aplicação Spring Boot
+**3. Execute a aplicação Spring Boot**
 ```bash
 ./mvnw spring-boot:run
 ```
 ou via IDE, executando a classe principal com @SpringBootApplication.
 
-**Obs: Ao inicializar a aplicação, as migrations serão executas no banco H2
+Ao inicializar a aplicação, as migrations serão executas no banco H2, porém
+caso queira executar as migrations antes, rode:
+```bash
+mvn flyway:migrate
+```
 
-4. Acesse o sistema no navegador, na página de login:
+**4. Acesse o sistema no navegador, na página de login:**
 ```bash
 http://localhost:8080/login
 ```
 
-5. Faça login usando um dos usuários pré-cadastrados.
+**5. Faça login usando um dos usuários pré-cadastrados.**
 
 ---
+
+
 
 👥 Grupo Desenvolvedor
 
