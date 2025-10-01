@@ -33,25 +33,7 @@ das motos no espaço.
 
 ---
 
-### 🗂 Estrutura do Projeto
-
-src/
-├── main/
-│   ├── java/
-│   │   └── com.pulse/
-│   │       ├── controller/      # Controladores web
-│   │       ├── model/           # Entidades e modelos
-│   │       ├── repository/      # Repositórios JPA
-│   │       ├── service/         # Lógica de negócio
-│   │       └── security/        # Configurações de Spring Security
-│   └── resources/
-│       ├── templates/           # Páginas Thymeleaf
-│       ├── static/              # CSS, JS, imagens
-│       └── db/migration/        # Scripts Flyway
-
----
-
-### Migrations
+### 📝 Migrations
 Ao total o projeto possui 6 migrations, que envolvem criação das tabelas no banco H2 e inserção de dados iniciais, como
 por exemplo, inserção de 3 usuários, cada um de um perfil diferente, para facilitar entrada no sistema.
 
