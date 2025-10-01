@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Colaboradores</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/list.css}">
+</head>
+<body>
+<header>
+    <a th:href="@{/home}" class="home-btn">🏠</a>
+</header>
+<h2>Lista de Colaboradores</h2>
+
+
+<p th:if="${success}" th:text="${success}" style="color:green; font-weight:bold;"></p>
+<p th:if="${error}" th:text="${error}" style="color:red; font-weight:bold;"></p>
+
+<div class="table-container">
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Função</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${employees}">
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.cpf}"></td>
+            <td th:text="${employee.email}"></td>
+            <td th:text="${employee.role}"></td>
+            <td>
+
+                <a th:href="@{/users/update/{cpf}(cpf=${employee.cpf})}" class="action-btn" title="Editar">✏️</a>
+
+
+                <button type="button" class="action-btn" title="Excluir"
+                        th:attr="onclick=|openDeleteModal('${employee.cpf}')|">🗑️</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<a class="back-link" th:href="@{/users/register}">➕ Cadastrar novo colaborador</a>
+
+
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <p>Tem certeza que deseja excluir este usuário?</p>
+        <form th:action="@{/users/delete}" method="post">
+            <input type="hidden" name="cpf" id="deleteId">
+            <button type="submit" class="delete-btn">Confirmar</button>
+            <button type="button" class="cancel-btn" onclick="closeDeleteModal()">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openDeleteModal(cpf) {
+        document.getElementById("deleteId").value = cpf;
+        document.getElementById("deleteModal").style.display = "flex";
+    }
+    function closeDeleteModal() {
+        document.getElementById("deleteModal").style.display = "none";
+    }
+</script>
+
+</body>
+</html>

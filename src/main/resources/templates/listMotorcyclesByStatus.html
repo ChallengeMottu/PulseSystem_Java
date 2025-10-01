@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Motos por Status</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/list.css}">
+
+</head>
+<body>
+<a th:href="@{/home}" class="home-btn">🏠</a>
+
+<h2>Lista de Motos por Status</h2>
+
+
+<div class="status-filters">
+    <a th:href="@{/motorcycles/status/EM_USO}"
+       th:classappend="${status == 'EM_USO'} ? 'active' : ''"
+       class="filter-btn">🏍️ Em Uso</a>
+
+    <a th:href="@{/motorcycles/status/DISPONIVEL}"
+       th:classappend="${status == 'DISPONIVEL'} ? 'active' : ''"
+       class="filter-btn">✅ Disponível</a>
+
+    <a th:href="@{/motorcycles/status/EM_MANUTENCAO}"
+       th:classappend="${status == 'EM_MANUTENCAO'} ? 'active' : ''"
+       class="filter-btn">🔧 Em Manutenção</a>
+</div>
+
+
+
+
+<p th:if="${errorMessage}" th:text="${error}" style="color:red; font-weight:bold;"></p>
+
+
+<div class="table-container">
+    <p th:if="${errorMessage}" th:text="${errorMessage}"
+       style="color:red; font-weight:bold; text-align:center;"></p>
+    <table>
+        <thead>
+        <tr>
+            <th>Placa</th>
+            <th>Modelo</th>
+            <th>Chassi</th>
+            <th>Status Operacional</th>
+            <th>Condição Mecânica</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="motorcycle : ${motorcycles}">
+            <td th:text="${motorcycle.licensePlate}"></td>
+            <td th:text="${motorcycle.model}"></td>
+            <td th:text="${motorcycle.chassisNumber}"></td>
+            <td th:text="${motorcycle.operationalStatus}"></td>
+            <td th:text="${motorcycle.mechanicalCondition}"></td>
+            <td>
+                <button type="button" class="action-btn"
+                        th:attr="onclick=|openEditModal(${motorcycle.id}, '${motorcycle.operationalStatus}')|">
+                    ✏️ Editar Status
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <h3>Editar Status da Moto</h3>
+        <form th:action="@{/motorcycles/updateStatus}" method="post">
+            <input type="hidden" name="id" id="editId">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+            <label for="editStatus">Novo Status:</label>
+            <select name="operationalStatus" id="editStatus" required>
+                <option value="DISPONIVEL">Disponível</option>
+                <option value="EM_USO">Em Uso</option>
+                <option value="EM_MANUTENCAO">Em Manutenção</option>
+            </select>
+
+            <div class="modal-buttons">
+                <button type="submit" class="btn-primary">Salvar</button>
+                <button type="button" class="btn-cancel" onclick="closeEditModal()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    function openEditModal(id, currentStatus) {
+        document.getElementById("editId").value = id;
+
+
+        const sel = document.getElementById("editStatus");
+        if ([...sel.options].some(o => o.value === currentStatus)) {
+            sel.value = currentStatus;
+        } else {
+            sel.selectedIndex = 0;
+        }
+
+        document.getElementById("editModal").style.display = "flex";
+    }
+    function closeEditModal() {
+        document.getElementById("editModal").style.display = "none";
+    }
+</script>
+
+</body>
+</html>

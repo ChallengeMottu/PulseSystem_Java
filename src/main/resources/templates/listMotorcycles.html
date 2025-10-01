@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Motos</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/list.css}"/>
+</head>
+<body>
+<header>
+    <a th:href="@{/home}" class="home-btn">🏠</a>
+</header>
+<h2>Lista de Motos</h2>
+
+
+
+<form th:action="@{/motorcycles/plate}" method="get" class="search-form">
+    <input type="text" name="plate" placeholder="Digite a placa da moto" required>
+    <button type="submit" class="btn-primary">🔍 Buscar</button>
+    <a th:href="@{/motorcycles/list}" class="btn-cancel">📋 Listar Todas</a>
+</form>
+
+
+<p th:if="${error}" th:text="${error}" style="color:red; font-weight:bold;"></p>
+<p th:if="${success}" th:text="${success}" style="color:green; font-weight:bold;"></p>
+
+<div class="table-container">
+    <table>
+        <thead>
+        <tr>
+            <th>Placa</th>
+            <th>Modelo</th>
+            <th>Chassi</th>
+            <th>Status Operacional</th>
+            <th>Condição Mecânica</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <p th:if="${successAssociation}" th:text="${successAssociation}" style="color:green; font-weight:bold;"></p>
+        <tr th:each="motorcycle : ${motorcycles}">
+            <td th:text="${motorcycle.licensePlate}"></td>
+            <td th:text="${motorcycle.model}"></td>
+            <td th:text="${motorcycle.chassisNumber}"></td>
+            <td th:text="${motorcycle.operationalStatus}"></td>
+            <td th:text="${motorcycle.mechanicalCondition}"></td>
+            <td>
+
+                <a th:href="@{/motorcycles/update/{id}(id=${motorcycle.id})}" class="action-btn" title="Editar">✏️</a>
+
+
+                <button type="button" class="action-btn" title="Excluir"
+                        th:attr="onclick=|openDeleteModal(${motorcycle.id})|">🗑️</button>
+
+
+                <a sec:authorize="hasRole('ROLE_OPERADOR')"
+                   th:if="${motorcycle.beacon == null}"
+                   th:href="@{/beacons/active/list(plate=${motorcycle.licensePlate})}"
+                   class="action-btn" title="Associar Beacon">📡</a>
+
+                <!-- Desassociar Beacon -->
+                <form sec:authorize="hasRole('ROLE_OPERADOR')" th:if="${motorcycle.beacon != null}"
+                      th:action="@{/beacons/dissociate}" method="post" style="display:inline;">
+                    <input type="hidden" name="plate" th:value="${motorcycle.licensePlate}">
+                    <button type="submit" class="action-btn" title="Desassociar Beacon">❌</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<a class="back-link" th:href="@{/motorcycles/register}">➕ Cadastrar nova moto</a>
+
+
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <p>Tem certeza que deseja excluir?</p>
+        <form id="deleteForm" th:action="@{/motorcycles/delete}" method="post" class="modal-buttons">
+            <input type="hidden" name="id" id="deleteId">
+            <button type="submit" class="delete-btn">Confirmar</button>
+            <button type="button" class="cancel-btn" onclick="closeDeleteModal()">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    function openDeleteModal(id) {
+        document.getElementById("deleteId").value = id;
+        document.getElementById("deleteModal").style.display = "flex";
+    }
+
+    function closeDeleteModal() {
+        document.getElementById("deleteModal").style.display = "none";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000; /* fundo preto */
+    color: #fff; /* textos em branco */
+    min-height: 100vh;
+}
+
+/* Container principal */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+/* Títulos principais */
+h1 {
+    color: #0f0;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.subheading {
+    font-size: 20px;
+    color: #ccc;
+    margin-bottom: 40px;
+}
+
+/* Box por tipo de usuário */
+.role-box {
+    background-color: #111;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.role-box h2 {
+    color: #0f0;
+    margin-bottom: 20px;
+}
+
+/* Funcionalidades */
+.funcionalidades {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.func-btn {
+    display: flex;
+    flex-direction: column; /* Deixa o ícone em cima e o texto abaixo */
+    align-items: center;
+    justify-content: center;
+    width: 140px; /* Aumentado */
+    height: 140px; /* Aumentado */
+    font-size: 17px; /* Levemente maior */
+    font-weight: bold;
+    background-color: #01743A;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 12px rgba(1, 116, 58, 0.6);
+    text-align: center;
+    line-height: 1.4; /* Mais espaçamento entre linhas */
+    padding: 10px;
+}
+
+.func-btn:hover {
+    background-color: #025b2e;
+    transform: scale(1.05);
+}
+
+
+/* Botão de logout */
+.logout-form {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.logout-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid #d9534f;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #d9534f;
+}

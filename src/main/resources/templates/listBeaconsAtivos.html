@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Beacons Ativos</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/list.css}">
+</head>
+<body>
+<header>
+    <a th:href="@{/motorcycles/list}" class="home-btn">🏠</a>
+</header>
+<h2>Beacons Ativos</h2>
+
+<p>Moto: <strong th:text="${plate}"></strong></p>
+
+<div th:if="${activeBeacons.isEmpty()}">
+    <p th:text="${errorList}"><strong>Nenhum beacon ativo disponível</strong></p>
+</div>
+
+<div th:each="beacon : ${activeBeacons}" class="beacon-item">
+    <p th:text="'Código: ' + ${beacon.beaconCode} + ' | ID: ' + ${beacon.id}"></p>
+    <form th:action="@{/beacons/associate}" method="post">
+        <input type="hidden" name="plate" th:value="${plate}">
+        <input type="hidden" name="beaconId" th:value="${beacon.id}">
+        <button type="submit" class="associate-btn">Associar</button>
+    </form>
+</div>
+
+
+
+
+</body>
+</html>

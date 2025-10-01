@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Beacons</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}" />
+</head>
+<body>
+<h2>Cadastro de Beacons</h2>
+
+<form th:action="@{/beacons/register}" th:object="${beacon}" method="post">
+    <div>
+        <label>Código UUID:</label>
+        <input type="text" th:field="*{beaconCode}" required />
+        <div th:if="${#fields.hasErrors('beaconCode')}" style="color:red">
+            <p th:errors="*{beaconCode}"></p>
+        </div>
+    </div>
+
+    <div>
+        <label>Status do beacon:</label>
+        <select th:field="*{beaconStatus}" required>
+            <option th:value="ATIVO">Ativo</option>
+            <option th:value="INATIVO">Inativo</option>
+        </select>
+        <div th:if="${#fields.hasErrors('beaconStatus')}" style="color:red">
+            <p th:errors="*{beaconStatus}"></p>
+        </div>
+    </div>
+
+
+    <div class="buttons">
+        <button type="submit" class="btn-primary">Cadastrar</button>
+        <a th:href="@{/beacons/list}" class="cancel-btn">Cancelar</a>
+    </div>
+</form>
+
+<div th:if="${success}" style="color: green;">
+    <p th:text="${success}"></p>
+</div>
+
+
+<div th:if="${errorMessage}" style="color: red;">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+</body>
+</html>

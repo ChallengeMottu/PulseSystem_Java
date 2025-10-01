@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      >
+<head>
+    <title>Cadastro de Motos</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}" />
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<header>
+    <h1>Cadastro de Motos</h1>
+</header>
+
+<form th:action="@{/motorcycles/register}" th:object="${motorcycle}" method="post">
+    <div>
+        <label>Placa:</label>
+        <input type="text" th:field="*{licensePlate}" required />
+        <div th:if="${#fields.hasErrors('licensePlate')}" style="color:red">
+            <p th:errors="*{licensePlate}"></p>
+        </div>
+    </div>
+
+    <div>
+        <label>Número de chassi:</label>
+        <input type="text" th:field="*{chassisNumber}" required />
+        <div th:if="${#fields.hasErrors('chassisNumber')}" style="color:red">
+            <p th:errors="*{chassisNumber}"></p>
+        </div>
+    </div>
+
+    <div>
+        <label>Condição Mecânica:</label>
+        <input type="text" th:field="*{mechanicalCondition}" required />
+        <div th:if="${#fields.hasErrors('mechanicalCondition')}" style="color:red">
+            <p th:errors="*{mechanicalCondition}"></p>
+        </div>
+    </div>
+
+    <div>
+        <label>Modelo:</label>
+        <select th:field="*{model}" required>
+            <option th:value="SPORT_110i">Sport 110i</option>
+            <option th:value="MOTTU_E">Mottu E</option>
+            <option th:value="SPORT_ESD">Sport ESD</option>
+            <option th:value="POP_110i">Pop 110i</option>
+        </select>
+        <div th:if="${#fields.hasErrors('model')}" style="color:red">
+            <p th:errors="*{model}"></p>
+        </div>
+    </div>
+
+    <div>
+        <label>Status Operacional:</label>
+        <select th:field="*{operationalStatus}" required>
+            <option th:value="EM_USO">Operando</option>
+            <option th:value="DISPONIVEL">Disponível</option>
+            <option th:value="EM_MANUTENCAO">Manutenção</option>
+        </select>
+        <div th:if="${#fields.hasErrors('operationalStatus')}" style="color:red">
+            <p th:errors="*{operationalStatus}"></p>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button type="submit" class="btn-primary">Cadastrar</button>
+        <a th:href="@{/motorcycles/list}" class="cancel-btn">Cancelar</a>
+    </div>
+</form>
+
+<div th:if="${success}" style="color: green;">
+    <p th:text="${success}"></p>
+</div>
+
+<div th:if="${errorMessage}" style="color: red;">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+</body>
+</html>

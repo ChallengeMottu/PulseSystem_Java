@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<form th:action="@{/logout}" method="post" class="logout-form">
+    <button type="submit" class="logout-btn">Sair</button>
+</form>
+
+<div class="home-container">
+    <h1>Olá, <span th:text="${nomeUsuario}">Usuário</span>!</h1>
+    <p>O que deseja realizar hoje?</p>
+
+
+    <!-- ========================= GESTOR ========================= -->
+    <div sec:authorize="hasRole('GESTOR')" class="role-box">
+        <h2>Gestor</h2>
+        <div class="funcionalidades">
+            <a th:href="@{/users/list}" class="func-btn">👥<br>Gerenciar Colaboradores</a>
+            <a th:href="@{/motorcycles/list}" class="func-btn">🏍️<br>Visualizar Motos</a>
+            <a th:href="@{/beacons/list}" class="func-btn">📡<br>Visualizar Beacons</a>
+        </div>
+    </div>
+
+    <!-- ========================= OPERADOR ========================= -->
+    <div sec:authorize="hasRole('OPERADOR')" class="role-box">
+        <h2>Operador</h2>
+        <div class="funcionalidades">
+            <a th:href="@{/motorcycles/list}" class="func-btn">🏍️<br>Gerenciar Motos</a>
+            <a th:href="@{/beacons/list}" class="func-btn">📡<br>Gerenciar Beacons</a>
+        </div>
+    </div>
+
+    <!-- ========================= MECÂNICO ========================= -->
+    <div sec:authorize="hasRole('MECANICO')" class="role-box">
+        <h2>Mecânico</h2>
+        <div class="funcionalidades">
+            <a th:href="@{/motorcycles/status/EM_USO}" class="func-btn">📝<br>Acompanhar Operação</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

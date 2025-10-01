@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .logout-container {
+            text-align: center;
+            background-color: #111;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(1, 116, 58, 0.5);
+        }
+
+        .logout-container h1 {
+            color: #01743A;
+            margin-bottom: 20px;
+        }
+
+        .btn-login {
+            background-color: #01743A;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-login:hover {
+            background-color: #00FF7F;
+        }
+    </style>
+</head>
+<body>
+
+<div class="logout-container">
+    <h1>Você saiu da sua conta</h1>
+    <a th:href="@{/login}" class="btn-login">Voltar para Login</a>
+</div>
+
+</body>
+</html>

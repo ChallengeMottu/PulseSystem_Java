@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      >
+<head>
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}" />
+    <meta charset="UTF-8">
+</head>
+<body>
+<h2>Cadastro de Usuário</h2>
+
+<form th:action="@{/users/register}" th:object="${user}" method="post">
+    <div>
+        <label>Nome:</label>
+        <input type="text" th:field="*{name}" required />
+        <div th:if="${#fields.hasErrors('name')}" style="color:red">
+            <p th:errors="*{name}"></p>
+        </div>
+    </div>
+
+    <div>
+        <label>CPF:</label>
+        <input type="text" th:field="*{cpf}" required />
+        <div th:if="${#fields.hasErrors('cpf')}" style="color:red">
+            <p th:errors="*{cpf}"></p>
+        </div>
+    </div>
+
+    <div>
+        <label>Data de nascimento:</label>
+        <input type="date" th:field="*{birthDate}" required />
+        <div th:if="${#fields.hasErrors('birthDate')}" style="color:red">
+            <p th:errors="*{birthDate}"></p>
+        </div>
+    </div>
+
+    <div>
+        <label>Email:</label>
+        <input type="email" th:field="*{email}" required />
+        <div th:if="${#fields.hasErrors('email')}" style="color:red">
+            <p th:errors="*{email}"></p>
+        </div>
+    </div>
+
+    <div>
+        <label>Senha:</label>
+        <input type="password" th:field="*{password}" required />
+        <div th:if="${#fields.hasErrors('password')}" style="color:red">
+            <p th:errors="*{password}"></p>
+        </div>
+    </div>
+
+    <div class="input-role">
+        <label>Perfil:</label>
+        <select th:field="*{role}" required>
+            <option th:value="GESTOR">Gestor</option>
+            <option th:value="MECANICO">Mecânico</option>
+            <option th:value="OPERADOR">Operador</option>
+        </select>
+        <div th:if="${#fields.hasErrors('role')}" style="color:red">
+            <p th:errors="*{role}"></p>
+        </div>
+    </div>
+
+    <div>
+        <label>Patio:</label>
+        <input type="number" th:field="*{parkingId}" readonly/>
+        <div th:if="${#fields.hasErrors('parkingId')}" style="color:red">
+            <p th:errors="*{parkingId}"></p>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button type="submit" class="btn-primary">Cadastrar</button>
+        <a th:href="@{/users/list}" class="cancel-btn">Cancelar</a>
+    </div>
+</form>
+
+
+<div th:if="${success}" style="color: green;">
+    <p th:text="${success}"></p>
+</div>
+
+
+<div th:if="${errorMessage}" style="color: red;">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+
+
+</body>
+</html>

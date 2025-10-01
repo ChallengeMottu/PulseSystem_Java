@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Atualizar Moto</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/formUpdate.css}" />
+</head>
+<body>
+
+<div class="form-update-container">
+    <h2>Atualizar Moto</h2>
+
+    <form class="form-update" th:action="@{/motorcycles/update/{id}(id=${motorcycle.id})}" th:object="${motorcycle}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <div>
+            <label>Placa:</label>
+            <input type="text" th:field="*{licensePlate}" required/>
+        </div>
+
+        <div>
+            <label>Modelo:</label>
+            <select th:field="*{model}">
+                <option value="SPORT_110i">SPORT_110i</option>
+                <option value="MOTTU_E">MOTTU_E</option>
+                <option value="SPORT_ESD">SPORT_ESD</option>
+                <option value="POP_110i">POP_110i</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Chassi:</label>
+            <input type="text" th:field="*{chassisNumber}" required/>
+        </div>
+
+        <div>
+            <label>Status Operacional:</label>
+            <select th:field="*{operationalStatus}">
+                <option value="EM_USO">EM_USO</option>
+                <option value="DISPONIVEL">DISPONIVEL</option>
+                <option value="EM_MANUTENCAO">EM_MANUTENCAO</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Condição Mecânica:</label>
+            <input type="text" th:field="*{mechanicalCondition}" required/>
+        </div>
+
+        <div class="buttons">
+            <button type="submit">Atualizar</button>
+            <a th:href="@{/motorcycles/list}" class="cancel-btn">Cancelar</a>
+        </div>
+    </form>
+
+    <div th:if="${success}" class="feedback success">
+        <p th:text="${success}"></p>
+    </div>
+
+    <div th:if="${error}" class="feedback error">
+        <p th:text="${error}"></p>
+    </div>
+</div>
+
+</body>
+</html>

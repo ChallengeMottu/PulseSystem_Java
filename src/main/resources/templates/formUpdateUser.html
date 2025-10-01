@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Atualizar Usuário</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/formUpdate.css}" />
+</head>
+<body>
+
+<div class="form-update-container">
+    <h2>Atualizar Usuário</h2>
+
+    <form class="form-update" th:action="@{/users/update}" th:object="${user}" method="post">
+        <div>
+            <label>Nome:</label>
+            <input type="text" th:field="*{name}" required />
+            <div th:if="${#fields.hasErrors('name')}" class="error-msg">
+                <p th:errors="*{name}"></p>
+            </div>
+        </div>
+
+        <div>
+            <label>CPF:</label>
+            <input type="text" th:field="*{cpf}" readonly />
+            <div th:if="${#fields.hasErrors('cpf')}" class="error-msg">
+                <p th:errors="*{cpf}"></p>
+            </div>
+        </div>
+
+        <div>
+            <label>Data de nascimento:</label>
+            <input type="date" th:field="*{birthDate}" required />
+            <div th:if="${#fields.hasErrors('birthDate')}" class="error-msg">
+                <p th:errors="*{birthDate}"></p>
+            </div>
+        </div>
+
+        <div>
+            <label>Email:</label>
+            <input type="email" th:field="*{email}" required />
+            <div th:if="${#fields.hasErrors('email')}" class="error-msg">
+                <p th:errors="*{email}"></p>
+            </div>
+        </div>
+
+        <div>
+            <label>Perfil:</label>
+            <select th:field="*{role}" required>
+                <option th:value="GESTOR" th:selected="${user.role == 'GESTOR'}">Gestor</option>
+                <option th:value="MECANICO" th:selected="${user.role == 'MECANICO'}">Mecânico</option>
+                <option th:value="OPERADOR" th:selected="${user.role == 'OPERADOR'}">Operador</option>
+            </select>
+            <div th:if="${#fields.hasErrors('role')}" class="error-msg">
+                <p th:errors="*{role}"></p>
+            </div>
+        </div>
+
+        <div>
+            <label>Pátio:</label>
+            <input type="number" th:field="*{parkingId}" readonly />
+            <div th:if="${#fields.hasErrors('parkingId')}" class="error-msg">
+                <p th:errors="*{parkingId}"></p>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button type="submit">Atualizar</button>
+            <a th:href="@{/users/list}" class="cancel-btn">Cancelar</a>
+        </div>
+
+    </form>
+
+    <div th:if="${success}" class="feedback success">
+        <p th:text="${success}"></p>
+    </div>
+
+    <div th:if="${errorMessage}" class="feedback error">
+        <p th:text="${errorMessage}"></p>
+    </div>
+</div>
+
+</body>
+</html>
