@@ -1,35 +1,28 @@
 ﻿# Etapa 1: Build da aplicação
-FROM eclipse-temurin:17-jdk-jammy AS build
-
-# Diretório de trabalho dentro do container
+FROM maven:3.9.3-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Copia arquivos do Maven Wrapper e pom.xml primeiro (para cache de dependências)
-COPY mvnw .
-COPY .mvn .mvn
+# Copia apenas o pom.xml para aproveitar cache de dependências
 COPY pom.xml .
 
-# Instala dependências (cache de Maven)
-RUN chmod +x mvnw
-RUN ./mvnw dependency:go-offline -B
+# Baixa dependências
+RUN mvn dependency:go-offline -B
 
-# Copia todo o código-fonte
+# Copia o código-fonte
 COPY src ./src
 
-# Build do JAR (sem testes para acelerar)
-RUN ./mvnw clean package -DskipTests
+# Build do jar, sem rodar testes
+RUN mvn clean package -DskipTests
 
-# Etapa 2: Imagem final
+# Etapa 2: Imagem final para rodar a aplicação
 FROM eclipse-temurin:17-jdk-jammy
-
-# Diretório de trabalho da aplicação
 WORKDIR /app
 
-# Copia o JAR gerado da etapa de build
-COPY --from=build /app/target/pulse-system-0.0.1-SNAPSHOT.jar app.jar
+# Copia o jar gerado
+COPY --from=build /app/target/*.jar app.jar
 
-# Expõe a porta padrão do Spring Boot
+# Expõe a porta (ajuste se sua aplicação não usa 8080)
 EXPOSE 8080
 
-# Comando para iniciar a aplicação
-ENTRYPOINT ["java","-jar","app.jar"]
+# Comando para rodar a aplicação
+ENTRYPOINT ["java", "-jar", "app.jar"]
