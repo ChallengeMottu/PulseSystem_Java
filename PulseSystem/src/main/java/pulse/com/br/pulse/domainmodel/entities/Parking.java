@@ -15,8 +15,10 @@ public class Parking {
     @Column(name = "CAPACITY")
     private Integer capacity;
 
+
     @Column(name = "FLOOR_PLAN")
     private String floorPlan;
+
 
     @Column(name = "STRUCTURE_PLAN")
     private String structurePlan;

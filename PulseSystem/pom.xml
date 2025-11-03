@@ -8,8 +8,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.4</version> <!-- versão estável mais recente -->
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>3.3.4</version>
+        <relativePath/>
     </parent>
 
     <groupId>pulse.com.br</groupId>
@@ -56,14 +56,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.flywaydb</groupId>-->
-<!--            <artifactId>flyway-core</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.flywaydb</groupId>-->
-<!--            <artifactId>flyway-database-oracle</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity6</artifactId>
@@ -80,6 +72,15 @@
             <artifactId>ojdbc11</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-database-oracle</artifactId>
+        </dependency>
+
 
 
         <dependency>
@@ -128,26 +129,26 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.flywaydb</groupId>-->
-<!--                <artifactId>flyway-maven-plugin</artifactId>-->
-<!--                <version>10.10.0</version>-->
-<!--                <configuration>-->
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>10.10.0</version>
+                <configuration>
 
-<!--                    <url>jdbc:h2:mem:db_pulse;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</url>-->
-<!--                    <user>sa</user>-->
-<!--                    <password></password>-->
-
-
-<!--                    <locations>-->
-<!--                        <location>filesystem:src/main/resources/db/migration</location>-->
-<!--                    </locations>-->
+                    <url>jdbc:oracle:thin:@//oracle.fiap.com.br:1521/ORCL</url>
+                    <user>RM556690</user>
+                    <password>100506</password>
 
 
-<!--                    <cleanDisabled>false</cleanDisabled>-->
-<!--                    <baselineOnMigrate>true</baselineOnMigrate>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+                    <locations>
+                        <location>filesystem:src/main/resources/db/migration</location>
+                    </locations>
+
+
+                    <cleanDisabled>false</cleanDisabled>
+                    <baselineOnMigrate>true</baselineOnMigrate>
+                </configuration>
+            </plugin>
 
 
 

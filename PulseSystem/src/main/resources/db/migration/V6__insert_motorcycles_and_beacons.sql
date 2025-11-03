@@ -10,7 +10,7 @@ VALUES ('323e4567-e89b-12d3-a456-426614174002', 'ATIVO');
 INSERT INTO beacons (beacon_code, beacon_status)
 VALUES ('423e4567-e89b-12d3-a456-426614174003', 'INATIVO');
 
-
+-- INSERÇÃO DE MOTOS
 INSERT INTO motorcycles (license_plate, model, chassis_number, operational_status, mechanical_condition, parking_id)
 VALUES ('ABC1D23', 'SPORT_110i', '9C2PC1230JR000001', 'EM_USO', 'Ótima', (SELECT MAX(id) FROM parkings));
 
