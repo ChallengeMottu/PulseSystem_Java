@@ -1,6 +1,4 @@
-/* ==========================
-   Reset e Variáveis
-========================== */
+
 :root {
     --primary-color: #01743A;
     --primary-dark: #025b2e;
@@ -22,9 +20,7 @@
     padding: 0;
 }
 
-/* ==========================
-   Layout Global
-========================== */
+
 body {
     margin: 0;
     padding: 0;
@@ -36,7 +32,7 @@ body {
     position: relative;
 }
 
-/* Efeito de partículas no background */
+
 body::before {
     content: '';
     position: fixed;
@@ -51,9 +47,7 @@ body::before {
     z-index: -1;
 }
 
-/* ==========================
-   Container Principal
-========================== */
+
 .home-container {
     display: flex;
     flex-direction: column;
@@ -64,9 +58,7 @@ body::before {
     animation: fadeInUp 0.8s ease;
 }
 
-/* ==========================
-   Header e Saudação
-========================== */
+
 .header {
     text-align: center;
     margin-bottom: 40px;
@@ -111,9 +103,7 @@ h1 {
     letter-spacing: 0.5px;
 }
 
-/* ==========================
-   Botão de Logout
-========================== */
+
 .logout-form {
     position: fixed;
     top: 25px;
@@ -142,9 +132,7 @@ h1 {
     box-shadow: 0 5px 15px rgba(217, 83, 79, 0.4);
 }
 
-/* ==========================
-   Container de Funcionalidades
-========================== */
+
 .role-box {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
@@ -179,9 +167,7 @@ h1 {
     letter-spacing: 1px;
 }
 
-/* ==========================
-   Grid de Funcionalidades - BOTÕES MAIORES
-========================== */
+
 .funcionalidades {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));

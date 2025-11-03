@@ -1,8 +1,4 @@
-﻿/* ==========================
-   Estilização para Beacons Ativos
-========================== */
-
-/* Container Principal */
+﻿
 body {
     background: linear-gradient(135deg, #000 0%, #002714 100%);
     font-family: 'Calibri', 'Segoe UI', sans-serif;
@@ -15,7 +11,7 @@ body {
     min-height: 100vh;
 }
 
-/* Cabeçalho */
+
 header {
     width: 90%;
     max-width: 1200px;
@@ -42,7 +38,7 @@ header {
     transform: scale(1.1);
 }
 
-/* Título */
+
 h2 {
     color: #01743A;
     margin: 0;
@@ -56,7 +52,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Informação da Placa */
+
 p {
     text-align: center;
     font-size: 1.2rem;
@@ -72,7 +68,6 @@ p strong {
 
 
 
-/* Container de Itens de Beacon */
 .beacon-item {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
@@ -97,7 +92,7 @@ p strong {
     box-shadow: 0 6px 25px rgba(1, 116, 58, 0.2);
 }
 
-/* Informação do Beacon */
+
 .beacon-item p {
     margin: 0;
     font-size: 1.1rem;
@@ -111,13 +106,13 @@ p strong {
     font-family: 'Courier New', monospace;
 }
 
-/* Formulário de Associação */
+
 .beacon-item form {
     margin: 0;
     flex-shrink: 0;
 }
 
-/* Botão Associar */
+
 .associate-btn {
     background: linear-gradient(135deg, #01743A, #00a854);
     color: #fff;
@@ -157,14 +152,12 @@ p strong {
     transform: translateY(0);
 }
 
-/* Inputs Hidden */
+
 input[type="hidden"] {
     display: none;
 }
 
-/* ==========================
-   Estados de Destaque
-========================== */
+
 .beacon-item:nth-child(even) {
     background: rgba(255, 255, 255, 0.03);
 }
@@ -173,9 +166,7 @@ input[type="hidden"] {
     background: rgba(255, 255, 255, 0.06);
 }
 
-/* ==========================
-   Animações
-========================== */
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -197,9 +188,7 @@ input[type="hidden"] {
 .beacon-item:nth-child(4) { animation-delay: 0.4s; }
 .beacon-item:nth-child(5) { animation-delay: 0.5s; }
 
-/* ==========================
-   Responsividade
-========================== */
+
 @media (max-width: 768px) {
     .beacon-item {
         flex-direction: column;

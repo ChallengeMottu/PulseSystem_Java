@@ -1,4 +1,4 @@
-/* login.css */
+
 body {
     background-color: #000000; /* fundo preto */
     font-family: Calibri;
@@ -55,7 +55,7 @@ input[type="password"]:focus {
 
 form div button {
     display: block;
-    margin: 0 auto; /* centraliza horizontalmente */
+    margin: 0 auto;
 }
 
 img {
@@ -91,9 +91,6 @@ a:hover {
     text-decoration: underline;
 }
 
-div[th\\:if] {
-    margin-top: 10px;
-    font-weight: bold;
-}
+
 
 

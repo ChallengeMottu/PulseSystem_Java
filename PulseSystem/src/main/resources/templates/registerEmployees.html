@@ -9,7 +9,7 @@
 <div class="form-container">
     <h2>Cadastro de Usuário</h2>
 
-    <!-- Mensagens gerais -->
+
     <div th:if="${success}" class="success-message">
         <p th:text="${success}"></p>
     </div>
@@ -20,7 +20,7 @@
 
     <form th:action="@{/users/register}" th:object="${user}" method="post" class="horizontal-form">
         <div class="form-row">
-            <!-- Linha 1: Nome e CPF -->
+
             <div class="form-group">
                 <label>Nome:</label>
                 <input type="text" th:field="*{name}" required
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-row">
-            <!-- Linha 2: Data Nascimento e Email -->
+
             <div class="form-group">
                 <label>Data de nascimento:</label>
                 <input type="date" th:field="*{birthDate}" required
@@ -65,7 +65,7 @@
         </div>
 
         <div class="form-row">
-            <!-- Linha 3: Senha e Confirmar Senha -->
+
             <div class="form-group">
                 <label>Senha:</label>
                 <input type="password" th:field="*{password}" required
@@ -112,7 +112,7 @@
 </div>
 
 <script>
-    // Máscara para CPF
+
     document.addEventListener('DOMContentLoaded', function() {
         const cpfInput = document.querySelector('input[th\\:field="*{cpf}"]');
         if (cpfInput) {
@@ -127,7 +127,7 @@
             });
         }
 
-        // Foco no primeiro campo com erro
+
         const firstError = document.querySelector('.field-error');
         if (firstError) {
             const input = firstError.previousElementSibling;

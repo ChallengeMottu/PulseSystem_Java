@@ -9,7 +9,7 @@
 <div class="form-container">
     <h2>Cadastro de Motos</h2>
 
-    <!-- Mensagens gerais -->
+
     <div th:if="${success}" class="success-message">
         <p th:text="${success}"></p>
     </div>
@@ -20,7 +20,7 @@
 
     <form th:action="@{/motorcycles/register}" th:object="${motorcycle}" method="post" class="horizontal-form">
         <div class="form-row">
-            <!-- Linha 1: Placa e Chassi -->
+
             <div class="form-group">
                 <label>Placa:</label>
                 <input type="text" th:field="*{licensePlate}" required
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-row">
-            <!-- Linha 2: Condição Mecânica e Modelo -->
+
             <div class="form-group">
                 <label>Condição Mecânica:</label>
                 <input type="text" th:field="*{mechanicalCondition}" required
@@ -70,7 +70,7 @@
         </div>
 
         <div class="form-row">
-            <!-- Linha 3: Status Operacional -->
+
             <div class="form-group full-width">
                 <label>Status Operacional:</label>
                 <select th:field="*{operationalStatus}" required class="form-input">
@@ -85,7 +85,7 @@
             </div>
         </div>
 
-        <!-- CAMPO HIDDEN para parkingId (igual ao employees) -->
+
         <input type="hidden" th:field="*{parkingId}" />
 
         <div class="form-actions">
@@ -96,7 +96,7 @@
 </div>
 
 <script>
-    // Máscara para placa
+
     document.addEventListener('DOMContentLoaded', function() {
         const placaInput = document.querySelector('input[th\\:field="*{licensePlate}"]');
         if (placaInput) {
@@ -109,7 +109,7 @@
             });
         }
 
-        // Foco no primeiro campo com erro
+
         const firstError = document.querySelector('.field-error');
         if (firstError) {
             const input = firstError.previousElementSibling;

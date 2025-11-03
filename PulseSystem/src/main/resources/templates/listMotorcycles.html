@@ -14,7 +14,7 @@
 
 
 <form th:action="@{/motorcycles/plate}" method="get" class="search-form">
-    <input type="text" name="plate" placeholder="Digite a placa da moto" required>
+    <input type="text" class="input-plate" name="plate" placeholder="Digite a placa da moto" required>
     <button type="submit" class="btn-primary">🔍 Buscar</button>
     <a th:href="@{/motorcycles/list}" class="btn-cancel">📋 Listar Todas</a>
 </form>
@@ -57,7 +57,7 @@
                    th:href="@{/beacons/active/list(plate=${motorcycle.licensePlate})}"
                    class="action-btn" title="Associar Beacon">📡</a>
 
-                <!-- Desassociar Beacon -->
+
                 <form sec:authorize="hasRole('ROLE_OPERADOR')" th:if="${motorcycle.beacon != null}"
                       th:action="@{/beacons/dissociate}" method="post" style="display:inline;">
                     <input type="hidden" name="plate" th:value="${motorcycle.licensePlate}">
@@ -72,7 +72,7 @@
 <a class="back-link" th:href="@{/motorcycles/register}">➕ Cadastrar nova moto</a>
 
 
-<!-- Modal de Exclusão -->
+
 <div id="deleteModal" class="modal">
     <div class="modal-content">
         <h3>🗑️ Confirmar Exclusão</h3>

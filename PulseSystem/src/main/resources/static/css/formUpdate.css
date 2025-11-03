@@ -1,6 +1,4 @@
-/* ==========================
-   Layout Global
-========================== */
+
 body {
     background: linear-gradient(135deg, #000 0%, #002714 100%);
     font-family: 'Calibri', 'Segoe UI', sans-serif;
@@ -13,9 +11,7 @@ body {
     padding: 20px;
 }
 
-/* ==========================
-   Container do Formulário
-========================== */
+
 .form-update-container {
     width: 100%;
     max-width: 800px;
@@ -36,9 +32,7 @@ h2 {
     padding: 20px 0;
 }
 
-/* ==========================
-   Formulário em Grid
-========================== */
+
 .form-update {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
@@ -52,15 +46,13 @@ h2 {
     gap: 25px;
 }
 
-/* Campos que ocupam linha inteira */
+
 .form-update input[type="hidden"] {
     grid-column: 1 / -1;
     display: none;
 }
 
-/* ==========================
-   Container dos Botões
-========================== */
+
 .buttons {
     grid-column: 1 / -1;
     display: flex;
@@ -71,9 +63,7 @@ h2 {
     width: 100%;
 }
 
-/* ==========================
-   Grupos de Formulário
-========================== */
+
 .form-update div:not(.buttons) {
     display: flex;
     flex-direction: column;
@@ -89,9 +79,7 @@ h2 {
     letter-spacing: 0.5px;
 }
 
-/* ==========================
-   ESTILOS PARA TODOS OS INPUTS - CORRIGIDO
-========================== */
+
 .form-update input[type="text"],
 .form-update input[type="email"],
 .form-update input[type="date"],
@@ -120,7 +108,7 @@ h2 {
     background: rgba(0, 0, 0, 0.7);
 }
 
-/* Estilo específico para inputs readonly */
+
 .form-update input[readonly] {
     background: rgba(0, 0, 0, 0.3);
     border-color: rgba(1, 116, 58, 0.2);
@@ -128,9 +116,7 @@ h2 {
     cursor: not-allowed;
 }
 
-/* ==========================
-   BOTÕES
-========================== */
+
 .buttons button[type="submit"] {
     background: linear-gradient(135deg, #01743A, #00a854);
     color: #fff;
@@ -181,9 +167,7 @@ h2 {
     color: #fff;
 }
 
-/* ==========================
-   Mensagens de Feedback e Erro
-========================== */
+
 .feedback {
     grid-column: 1 / -1;
     padding: 15px 25px;
@@ -206,7 +190,7 @@ h2 {
     color: #ff6b6b;
 }
 
-/* Mensagens de erro de validação */
+
 .error-msg {
     color: #ff6b6b;
     font-size: 0.8rem;
@@ -214,9 +198,7 @@ h2 {
     font-weight: bold;
 }
 
-/* ==========================
-   Estilo para Select
-========================== */
+
 .form-update select {
     appearance: none;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2301743A'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
@@ -226,9 +208,7 @@ h2 {
     padding-right: 40px;
 }
 
-/* ==========================
-   Estilo específico para input date
-========================== */
+
 .form-update input[type="date"] {
     position: relative;
 }
@@ -238,9 +218,7 @@ h2 {
     cursor: pointer;
 }
 
-/* ==========================
-   Responsividade
-========================== */
+
 @media (max-width: 768px) {
     .form-update {
         grid-template-columns: 1fr;
@@ -304,7 +282,7 @@ h2 {
     }
 }
 
-/* Só empilha em telas muito pequenas */
+
 @media (max-width: 360px) {
     .buttons {
         flex-direction: column;
@@ -318,9 +296,7 @@ h2 {
     }
 }
 
-/* ==========================
-   Efeitos Visuais
-========================== */
+
 .form-update-container {
     animation: fadeInUp 0.5s ease;
 }

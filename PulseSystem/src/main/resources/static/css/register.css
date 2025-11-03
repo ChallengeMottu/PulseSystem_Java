@@ -1,6 +1,4 @@
-/* ==========================
-   Layout Global
-========================== */
+
 body {
     background-color: #000;
     font-family: Calibri, sans-serif;
@@ -14,9 +12,7 @@ body {
     background: linear-gradient(135deg, #000 0%, #002714 100%);
 }
 
-/* ==========================
-   Container do Formulário
-========================== */
+
 .form-container {
     background-color: #111;
     padding: 40px;
@@ -37,9 +33,7 @@ h2 {
     text-shadow: 0 0 10px rgba(1, 116, 58, 0.5);
 }
 
-/* ==========================
-   Layout do Formulário Horizontal
-========================== */
+
 .horizontal-form {
     width: 100%;
 }
@@ -62,9 +56,7 @@ h2 {
     flex: 2;
 }
 
-/* ==========================
-   Campos do Formulário
-========================== */
+
 .form-group label {
     color: #01743A;
     font-weight: bold;
@@ -98,9 +90,7 @@ h2 {
     color: #666;
 }
 
-/* ==========================
-   Mensagens de Erro dos Campos
-========================== */
+
 .field-error {
     color: #ff6b6b;
     font-size: 0.8rem;
@@ -124,9 +114,7 @@ h2 {
     }
 }
 
-/* ==========================
-   Mensagens Gerais
-========================== */
+
 .success-message {
     color: #00ff99;
     background: rgba(0, 255, 153, 0.1);
@@ -149,9 +137,7 @@ h2 {
     text-align: center;
 }
 
-/* ==========================
-   Botões
-========================== */
+
 .form-actions {
     display: flex;
     justify-content: center;
@@ -205,9 +191,7 @@ h2 {
     color: #fff;
 }
 
-/* ==========================
-   Texto de Ajuda
-========================== */
+
 .hint {
     color: #888;
     font-size: 0.8rem;
@@ -215,9 +199,7 @@ h2 {
     font-style: italic;
 }
 
-/* ==========================
-   Responsividade
-========================== */
+
 @media (max-width: 768px) {
     .form-container {
         padding: 20px;
@@ -240,7 +222,7 @@ h2 {
     }
 }
 
-/* Estilo para select */
+
 select.form-input {
     appearance: none;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2301743A'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
@@ -250,46 +232,34 @@ select.form-input {
     padding-right: 40px;
 }
 
-/* ==========================
-   Estilos Específicos para Cadastro de Motos
-========================== */
 
-/* Ajuste para selects com opções longas */
 select.form-input {
     min-height: 44px;
 }
 
-/* Placeholder para inputs */
+
 .form-input::placeholder {
     color: #666;
     font-style: italic;
 }
 
-/* Estilo para campos de texto longo */
+
 .form-input[type="text"] {
     text-transform: uppercase;
 }
 
 
 
-/* ==========================
-   Melhorias de Acessibilidade
-========================== */
-
-/* Indicador visual para campos obrigatórios */
 .form-group label:after {
     content: " *";
     color: #ff6b6b;
 }
 
-/* Remove o asterisco de campos opcionais */
+
 .form-group.full-width label:after {
     content: "";
 }
 
-/* ==========================
-   Estados de Validação
-========================== */
 .form-input:valid:not(:placeholder-shown) {
     border-color: #00ff99;
 }
@@ -298,9 +268,7 @@ select.form-input {
     border-color: #ff6b6b;
 }
 
-/* ==========================
-   Responsividade Aprimorada
-========================== */
+
 @media (max-width: 768px) {
     .form-container {
         padding: 20px 15px;
@@ -320,9 +288,7 @@ select.form-input {
     }
 }
 
-/* ==========================
-   Animações Adicionais
-========================== */
+
 .form-input {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -331,7 +297,7 @@ select.form-input {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Efeito de loading no botão */
+
 .btn-primary:disabled {
     opacity: 0.7;
     cursor: not-allowed;

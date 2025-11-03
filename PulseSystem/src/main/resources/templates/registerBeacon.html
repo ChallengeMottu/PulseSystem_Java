@@ -10,7 +10,7 @@
 <div class="form-container">
     <h2>Cadastro de Beacons</h2>
 
-    <!-- Mensagens gerais -->
+
     <div th:if="${success}" class="success-message">
         <p th:text="${success}"></p>
     </div>
@@ -51,7 +51,7 @@
 </div>
 
 <script>
-    // Foco no primeiro campo com erro
+
     document.addEventListener('DOMContentLoaded', function() {
         const firstError = document.querySelector('.field-error');
         if (firstError) {
