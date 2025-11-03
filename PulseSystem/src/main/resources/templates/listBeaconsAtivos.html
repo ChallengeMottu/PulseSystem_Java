@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Beacons Ativos</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/list.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/listActive.css}">
 </head>
 <body>
 <header>
-    <a th:href="@{/motorcycles/list}" class="home-btn">🏠</a>
+    <a th:href="@{/home}"  class="home-btn">🏠</a>
 </header>
 <h2>Beacons Ativos</h2>
 
@@ -25,6 +25,8 @@
         <button type="submit" class="associate-btn">Associar</button>
     </form>
 </div>
+
+<a th:href="@{/motorcycles/list}" class="cancel-btn">Cancelar</a>
 
 
 

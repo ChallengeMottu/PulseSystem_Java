@@ -38,11 +38,11 @@ public class MotorcycleServiceImpl implements MotorcycleService {
         }
 
 
-        Parking parking = parkingRepository.findById(motorcycle.getParkingId())
+        Parking parking = parkingRepository.findById(motorcycle.getParking().getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Pátio não encontrado."));
 
 
-        long totalMotos = repository.countByParkingId(motorcycle.getParkingId());
+        long totalMotos = repository.countByParking_Id(motorcycle.getParking().getId());
         if (totalMotos >= parking.getCapacity()) {
             throw new IllegalStateException("Capacidade máxima do pátio atingida.");
         }
@@ -71,7 +71,7 @@ public class MotorcycleServiceImpl implements MotorcycleService {
 
     @Override
     public List<Motorcycle> findAllByParking(Long parkingId) {
-        List<Motorcycle> listMotos = repository.findByParkingId(parkingId);
+        List<Motorcycle> listMotos = repository.findByParking_Id(parkingId);
         if (listMotos == null){
             throw new ResourceNotFoundException("Pátio não encontrado.");
         }
@@ -87,7 +87,7 @@ public class MotorcycleServiceImpl implements MotorcycleService {
 
     @Override
     public List<Motorcycle> listAllByStatusAndParking(OperationStatus status, Long parkingId) {
-        return repository.findByOperationalStatusAndParkingId(status, parkingId);
+        return repository.findByOperationalStatusAndParking_Id(status, parkingId);
     }
 
 
@@ -113,7 +113,7 @@ public class MotorcycleServiceImpl implements MotorcycleService {
 
         motorcycle.validate();
 
-        if (!parkingRepository.existsById(motorcycle.getParkingId())) {
+        if (!parkingRepository.existsById(motorcycle.getParking().getId())) {
             throw new ResourceNotFoundException("Pátio não encontrado.");
         }
 
@@ -123,7 +123,7 @@ public class MotorcycleServiceImpl implements MotorcycleService {
 
     public boolean belongsToEmployeeParking(Long motorcycleId, Long parkingId) {
         Motorcycle moto = findById(motorcycleId);
-        return moto != null && moto.getParkingId().equals(parkingId);
+        return moto != null && moto.getParking().getId().equals(parkingId);
     }
 
     public void updateStatus(Long id, OperationStatus newStatus) {

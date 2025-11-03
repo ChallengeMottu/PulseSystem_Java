@@ -72,12 +72,14 @@
 <a class="back-link" th:href="@{/motorcycles/register}">➕ Cadastrar nova moto</a>
 
 
+<!-- Modal de Exclusão -->
 <div id="deleteModal" class="modal">
     <div class="modal-content">
-        <p>Tem certeza que deseja excluir?</p>
+        <h3>🗑️ Confirmar Exclusão</h3>
+        <p>Tem certeza que deseja excluir esta moto?</p>
         <form id="deleteForm" th:action="@{/motorcycles/delete}" method="post" class="modal-buttons">
             <input type="hidden" name="id" id="deleteId">
-            <button type="submit" class="delete-btn">Confirmar</button>
+            <button type="submit" class="delete-btn">Excluir</button>
             <button type="button" class="cancel-btn" onclick="closeDeleteModal()">Cancelar</button>
         </form>
     </div>

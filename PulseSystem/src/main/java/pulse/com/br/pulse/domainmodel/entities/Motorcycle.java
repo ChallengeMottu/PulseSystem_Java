@@ -31,8 +31,9 @@ public class Motorcycle {
     @OneToOne(mappedBy = "motorcycle")
     private Beacon beacon;
 
-    @Column(name = "parking_id", nullable = false)
-    private Long parkingId;
+    @ManyToOne
+    @JoinColumn(name = "parking_id", nullable = false)
+    private Parking parking;
 
 
     public Long getId() {
@@ -91,12 +92,12 @@ public class Motorcycle {
         this.beacon = beacon;
     }
 
-    public Long getParkingId() {
-        return parkingId;
+    public Parking getParking() {
+        return parking;
     }
 
-    public void setParkingId(Long parkingId) {
-        this.parkingId = parkingId;
+    public void setParking(Parking parking) {
+        this.parking = parking;
     }
 
     public void validate(){

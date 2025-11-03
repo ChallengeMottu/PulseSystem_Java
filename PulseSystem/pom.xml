@@ -56,14 +56,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-database-oracle</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.flywaydb</groupId>-->
+<!--            <artifactId>flyway-core</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.flywaydb</groupId>-->
+<!--            <artifactId>flyway-database-oracle</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity6</artifactId>
@@ -76,9 +76,8 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>2.2.220</version>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc11</artifactId>
             <scope>runtime</scope>
         </dependency>
 
@@ -89,6 +88,7 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.32</version>
@@ -128,26 +128,26 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>10.10.0</version>
-                <configuration>
+<!--            <plugin>-->
+<!--                <groupId>org.flywaydb</groupId>-->
+<!--                <artifactId>flyway-maven-plugin</artifactId>-->
+<!--                <version>10.10.0</version>-->
+<!--                <configuration>-->
 
-                    <url>jdbc:h2:mem:db_pulse;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</url>
-                    <user>sa</user>
-                    <password></password>
-
-
-                    <locations>
-                        <location>filesystem:src/main/resources/db/migration</location>
-                    </locations>
+<!--                    <url>jdbc:h2:mem:db_pulse;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</url>-->
+<!--                    <user>sa</user>-->
+<!--                    <password></password>-->
 
 
-                    <cleanDisabled>false</cleanDisabled>
-                    <baselineOnMigrate>true</baselineOnMigrate>
-                </configuration>
-            </plugin>
+<!--                    <locations>-->
+<!--                        <location>filesystem:src/main/resources/db/migration</location>-->
+<!--                    </locations>-->
+
+
+<!--                    <cleanDisabled>false</cleanDisabled>-->
+<!--                    <baselineOnMigrate>true</baselineOnMigrate>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
 
 
 

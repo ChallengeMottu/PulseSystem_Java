@@ -39,6 +39,9 @@
             text-decoration: none;
             display: inline-block;
         }
+        .title-logout{
+            font-size: 20px;
+        }
 
         .btn-login:hover {
             background-color: #00FF7F;
@@ -48,7 +51,7 @@
 <body>
 
 <div class="logout-container">
-    <h1>Você saiu da sua conta</h1>
+    <h1 class="title-logout">Você saiu da sua conta</h1>
     <a th:href="@{/login}" class="btn-login">Voltar para Login</a>
 </div>
 

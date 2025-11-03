@@ -1,105 +1,473 @@
+/* ==========================
+   Reset e Variáveis
+========================== */
+:root {
+    --primary-color: #01743A;
+    --primary-dark: #025b2e;
+    --primary-light: #00a854;
+    --accent-color: #00ff99;
+    --background-dark: #000;
+    --background-light: #111;
+    --text-primary: #fff;
+    --text-secondary: #ccc;
+    --danger-color: #d9534f;
+    --danger-hover: #c9302c;
+    --shadow-glow: 0 0 20px rgba(1, 116, 58, 0.5);
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================
+   Layout Global
+========================== */
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #000; /* fundo preto */
-    color: #fff; /* textos em branco */
+    font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #000 0%, #002714 100%);
+    color: var(--text-primary);
     min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
 }
 
-/* Container principal */
+/* Efeito de partículas no background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+            radial-gradient(circle at 20% 80%, rgba(1, 116, 58, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(0, 255, 153, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 40% 40%, rgba(1, 116, 58, 0.08) 0%, transparent 50%);
+    z-index: -1;
+}
+
+/* ==========================
+   Container Principal
+========================== */
 .home-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 20px;
-    justify-content: space-between;
-    margin-bottom: 15px;
+    padding: 60px 20px 30px;
+    min-height: 100vh;
+    position: relative;
+    animation: fadeInUp 0.8s ease;
 }
 
-/* Títulos principais */
-h1 {
-    color: #0f0;
-    font-size: 32px;
-    margin-bottom: 10px;
-}
-
-.subheading {
-    font-size: 20px;
-    color: #ccc;
+/* ==========================
+   Header e Saudação
+========================== */
+.header {
+    text-align: center;
     margin-bottom: 40px;
+    position: relative;
 }
 
-/* Box por tipo de usuário */
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    border-radius: 2px;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: var(--shadow-glow);
+    letter-spacing: 1px;
+}
+
+.header span {
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================
+   Botão de Logout
+========================== */
+.logout-form {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 1000;
+}
+
+.logout-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: rgba(217, 83, 79, 0.15);
+    border: 1px solid var(--danger-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.logout-btn:hover {
+    background: var(--danger-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(217, 83, 79, 0.4);
+}
+
+/* ==========================
+   Container de Funcionalidades
+========================== */
 .role-box {
-    background-color: #111;
-    border-radius: 15px;
-    padding: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px 30px;
     margin-bottom: 30px;
     width: 100%;
-    max-width: 700px;
+    max-width: 900px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(1, 116, 58, 0.2);
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    overflow: hidden;
+}
+
+.role-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
 }
 
 .role-box h2 {
-    color: #0f0;
-    margin-bottom: 20px;
+    color: var(--primary-light);
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* Funcionalidades */
+/* ==========================
+   Grid de Funcionalidades - BOTÕES MAIORES
+========================== */
 .funcionalidades {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
+    max-width: 850px;
+    margin: 0 auto;
 }
 
 .func-btn {
     display: flex;
-    flex-direction: column; /* Deixa o ícone em cima e o texto abaixo */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 140px; /* Aumentado */
-    height: 140px; /* Aumentado */
-    font-size: 17px; /* Levemente maior */
-    font-weight: bold;
-    background-color: #01743A;
-    color: white;
+    width: 100%;
+    min-height: 160px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--text-primary);
     border: none;
-    border-radius: 15px;
+    border-radius: 16px;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 0 12px rgba(1, 116, 58, 0.6);
+    box-shadow: 0 4px 15px rgba(1, 116, 58, 0.3);
     text-align: center;
-    line-height: 1.4; /* Mais espaçamento entre linhas */
-    padding: 10px;
+    line-height: 1.4;
+    padding: 25px 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.func-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s ease;
 }
 
 .func-btn:hover {
-    background-color: #025b2e;
-    transform: scale(1.05);
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(1, 116, 58, 0.5);
+}
+
+.func-btn:hover::before {
+    left: 100%;
+}
+
+/* ÍCONES MAIORES */
+.func-btn .emoji {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    line-height: 1;
 }
 
 
-/* Botão de logout */
-.logout-form {
+.svg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 40px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-soft);
+    position: relative;
+}
+
+.svg-container svg {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    min-height: 350px;
+    display: block;
+    border-radius: 8px;
+}
+
+.svg-container::before {
+    content: '📊 Estrutura Planejada';
     position: absolute;
-    top: 15px;
-    right: 20px;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--background-dark);
+    padding: 5px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-light);
+    border: 1px solid rgba(1, 116, 58, 0.3);
+    border-radius: 10px;
+    white-space: nowrap;
 }
 
-.logout-btn {
-    padding: 6px 12px;
-    font-size: 14px;
-    color: #fff;
-    background-color: transparent;
-    border: 1px solid #d9534f;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+
+
+.svg-container line {
+    stroke: var(--accent-color) !important;
+    stroke-width: 3 !important;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 153, 0.6));
+    animation: pulseLine 2s ease-in-out infinite;
 }
 
-.logout-btn:hover {
-    background-color: #d9534f;
+@keyframes pulseLine {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+
+.error-message {
+    background: rgba(217, 83, 79, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(217, 83, 79, 0.3);
+    color: #ff6b6b;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px auto;
+    max-width: 900px;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(217, 83, 79, 0.2);
+}
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.role-box {
+    animation: fadeInUp 0.6s ease;
+}
+
+.func-btn {
+    animation: fadeInUp 0.8s ease;
+}
+
+
+@media (max-width: 768px) {
+    .home-container {
+        padding: 50px 15px 20px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .logout-form {
+        top: 15px;
+        right: 15px;
+    }
+
+    .logout-btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+
+    .role-box {
+        padding: 30px 20px;
+        margin-bottom: 25px;
+    }
+
+    .funcionalidades {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 20px;
+    }
+
+    .func-btn {
+        min-height: 150px;
+        padding: 20px 12px;
+        font-size: 1rem;
+    }
+
+    .func-btn .emoji {
+        font-size: 3rem;
+        margin-bottom: 12px;
+    }
+
+    .svg-container {
+        padding: 20px 15px;
+        margin: 15px auto;
+        max-width: 90%;
+    }
+
+    .svg-container::before {
+        font-size: 0.8rem;
+        padding: 4px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-container {
+        padding: 40px 10px 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .funcionalidades {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .func-btn {
+        min-height: 140px;
+        padding: 18px 10px;
+        font-size: 0.95rem;
+        border-radius: 14px;
+    }
+
+    .func-btn .emoji {
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+    }
+
+    .svg-container {
+        padding: 15px 12px;
+        margin: 15px auto;
+        max-width: 95%;
+    }
+
+    .role-box {
+        padding: 25px 15px;
+        margin-bottom: 20px;
+    }
+}
+
+
+@media (max-width: 360px) {
+    .funcionalidades {
+        grid-template-columns: 1fr;
+        max-width: 220px;
+    }
+
+    .func-btn {
+        min-height: 130px;
+    }
+}
+
+
+.func-btn:active {
+    transform: translateY(-2px) scale(1.02);
+    transition: transform 0.1s ease;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+.func-btn:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.logout-btn:focus-visible {
+    outline: 3px solid var(--danger-color);
+    outline-offset: 2px;
 }

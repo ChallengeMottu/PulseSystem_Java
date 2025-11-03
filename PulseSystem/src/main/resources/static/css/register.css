@@ -6,107 +6,334 @@ body {
     font-family: Calibri, sans-serif;
     color: #fff;
     display: flex;
-    justify-content: center; /* centraliza horizontalmente */
-    align-items: center;     /* centraliza verticalmente */
-    flex-direction: column;
-    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     margin: 0;
-    padding: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #000 0%, #002714 100%);
 }
 
 /* ==========================
-   Título
+   Container do Formulário
 ========================== */
-header {
-    text-align: center;
-    margin-bottom: 20px; /* aproxima o título do formulário */
-}
-
-header h1 {
-    font-size: 24px;
-    margin: 0;
-}
-
-/* ==========================
-   Formulário
-========================== */
-form {
+.form-container {
     background-color: #111;
-    padding: 30px;
-    border-radius: 10px;
-    width: 400px;
-    box-shadow: 0 0 15px rgba(1, 116, 58, 0.5);
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* centraliza campos e botões */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(1, 116, 58, 0.6);
+    width: 100%;
+    max-width: 800px;
+    border: 1px solid rgba(1, 116, 58, 0.3);
 }
 
-form div {
-    margin-bottom: 15px;
+h2 {
+    color: #01743A;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(1, 116, 58, 0.5);
+}
+
+/* ==========================
+   Layout do Formulário Horizontal
+========================== */
+.horizontal-form {
     width: 100%;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+    align-items: flex-start;
 }
 
-input[type="text"], input[type="password"], input[type="email"], input[type="date"], input[type="number"], select { width: 100%; padding: 10px; border: 2px solid #01743A; border-radius: 5px; background-color: #222; color: #fff; box-sizing: border-box; } input:focus, select:focus { border-color: #00FF7F; outline: none; }
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
 
+.form-group.full-width {
+    flex: 2;
+}
+
+/* ==========================
+   Campos do Formulário
+========================== */
+.form-group label {
+    color: #01743A;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-input {
+    padding: 12px 15px;
+    border: 2px solid #333;
+    border-radius: 6px;
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Calibri, sans-serif;
+}
+
+.form-input:focus {
+    border-color: #01743A;
+    outline: none;
+    box-shadow: 0 0 10px rgba(1, 116, 58, 0.5);
+    background-color: #1a1a1a;
+}
+
+.form-input::placeholder {
+    color: #666;
+}
+
+/* ==========================
+   Mensagens de Erro dos Campos
+========================== */
+.field-error {
+    color: #ff6b6b;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    padding: 8px 12px;
+    background: rgba(255, 107, 107, 0.1);
+    border-radius: 4px;
+    border-left: 3px solid #ff6b6b;
+    animation: slideIn 0.3s ease;
+    min-height: 20px;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================
+   Mensagens Gerais
+========================== */
+.success-message {
+    color: #00ff99;
+    background: rgba(0, 255, 153, 0.1);
+    padding: 15px 20px;
+    border-radius: 6px;
+    border-left: 4px solid #00ff99;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.error-message {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    padding: 15px 20px;
+    border-radius: 6px;
+    border-left: 4px solid #ff6b6b;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
 
 /* ==========================
    Botões
 ========================== */
-.buttons {
+.form-actions {
     display: flex;
-    justify-content: center; /* alinha os botões horizontalmente */
-    gap: 15px;               /* espaço entre os botões */
-    margin-top: 20px;
-}
-
-.btn-primary,
-.cancel-btn {
-    min-width: 120px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    text-align: center;
-}
-
-/* Cadastrar */
-.cancel-btn {
-    background: #6c757d;
-    color: #fff;
-    padding: 8px 15px;
-    text-decoration: none;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(1, 116, 58, 0.3);
 }
 
 .btn-primary {
-    background-color: #01743A;
+    background: linear-gradient(135deg, #01743A, #00a854);
     color: #fff;
-    padding: 10px 20px;
-    font-size: 14px;
-    max-width: 120px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    min-width: 140px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .btn-primary:hover {
-    background-color: #00FF7F;
+    background: linear-gradient(135deg, #00a854, #01743A);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(1, 116, 58, 0.4);
 }
 
+.cancel-btn {
+    background: rgba(108, 117, 125, 0.8);
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    min-width: 140px;
+    text-align: center;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
 
 .cancel-btn:hover {
-    background-color: #666;
+    background: rgba(108, 117, 125, 1);
+    transform: translateY(-2px);
     text-decoration: none;
+    color: #fff;
 }
+
+/* ==========================
+   Texto de Ajuda
+========================== */
+.hint {
+    color: #888;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* ==========================
+   Responsividade
+========================== */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn-primary,
+    .cancel-btn {
+        min-width: 100%;
+    }
+}
+
+/* Estilo para select */
+select.form-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2301743A'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+/* ==========================
+   Estilos Específicos para Cadastro de Motos
+========================== */
+
+/* Ajuste para selects com opções longas */
+select.form-input {
+    min-height: 44px;
+}
+
+/* Placeholder para inputs */
+.form-input::placeholder {
+    color: #666;
+    font-style: italic;
+}
+
+/* Estilo para campos de texto longo */
+.form-input[type="text"] {
+    text-transform: uppercase;
+}
+
 
 
 /* ==========================
-   Mensagens de erro/sucesso
+   Melhorias de Acessibilidade
 ========================== */
-div[th\\:if] {
-    margin-top: 10px;
+
+/* Indicador visual para campos obrigatórios */
+.form-group label:after {
+    content: " *";
+    color: #ff6b6b;
+}
+
+/* Remove o asterisco de campos opcionais */
+.form-group.full-width label:after {
+    content: "";
+}
+
+/* ==========================
+   Estados de Validação
+========================== */
+.form-input:valid:not(:placeholder-shown) {
+    border-color: #00ff99;
+}
+
+.form-input:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: #ff6b6b;
+}
+
+/* ==========================
+   Responsividade Aprimorada
+========================== */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 20px 15px;
+    }
+
+    .form-row {
+        gap: 10px;
+    }
+
+    .form-group label {
+        font-size: 0.85rem;
+    }
+
+    .form-input {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+}
+
+/* ==========================
+   Animações Adicionais
+========================== */
+.form-input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary, .cancel-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efeito de loading no botão */
+.btn-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
 }

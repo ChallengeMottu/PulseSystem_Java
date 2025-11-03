@@ -46,31 +46,39 @@
 <a class="back-link" th:href="@{/beacons/register}">➕ Cadastrar novo beacon</a>
 
 
+<!-- Modal de Exclusão -->
 <div id="deleteModal" class="modal">
     <div class="modal-content">
+        <h3>Confirmar Exclusão</h3>
         <p>Tem certeza que deseja excluir este beacon?</p>
         <form th:action="@{/beacons/delete}" method="post">
             <input type="hidden" name="id" id="deleteId">
-            <button type="submit" class="delete-btn">Confirmar</button>
-            <button type="button" class="cancel-btn" onclick="closeDeleteModal()">Cancelar</button>
+            <div class="modal-buttons-container">
+                <button type="submit" class="modal-btn delete-btn">Excluir</button>
+                <button type="button" class="modal-btn cancel-btn" onclick="closeDeleteModal()">Cancelar</button>
+            </div>
         </form>
     </div>
 </div>
+
+<!-- Modal de Edição -->
 <div id="editModal" class="modal">
     <div class="modal-content">
         <h3>Atualizar Status do Beacon</h3>
         <form th:action="@{/beacons/updateStatus}" method="post">
             <input type="hidden" name="id" id="editId">
 
-            <label for="editStatus">Novo Status:</label>
-            <select name="beaconStatus" id="editStatus">
-                <option value="ATIVO">ATIVO</option>
-                <option value="INATIVO">INATIVO</option>
-            </select>
+            <div class="form-group">
+                <select name="beaconStatus" id="editStatus" class="modal-select">
+                    <option value="ATIVO">ATIVO</option>
+                    <option value="INATIVO">INATIVO</option>
+                </select>
+            </div>
 
-            <br><br>
-            <button type="submit" class="confirm-btn">Salvar</button>
-            <button type="button" class="cancel-btn" onclick="closeEditModal()">Cancelar</button>
+            <div class="modal-buttons-container">
+                <button type="submit" class="modal-btn confirm-btn">Salvar</button>
+                <button type="button" class="modal-btn cancel-btn" onclick="closeEditModal()">Cancelar</button>
+            </div>
         </form>
     </div>
 </div>

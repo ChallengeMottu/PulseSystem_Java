@@ -14,6 +14,7 @@ import pulse.com.br.pulse.application.services.interfaces.EmployeeService;
 import pulse.com.br.pulse.application.services.interfaces.MotorcycleService;
 import pulse.com.br.pulse.domainmodel.entities.Employee;
 import pulse.com.br.pulse.domainmodel.entities.Motorcycle;
+import pulse.com.br.pulse.domainmodel.entities.Parking;
 import pulse.com.br.pulse.domainmodel.enums.OperationStatus;
 import pulse.com.br.pulse.infraestructure.configurations.Mapper;
 
@@ -47,29 +48,39 @@ public class MotorcycleController {
     @PreAuthorize("hasAnyRole('ROLE_GESTOR', 'ROLE_OPERADOR')")
     @PostMapping("/register")
     public String saveMotorcycle(@Valid @ModelAttribute("motorcycle") MotorcycleRequest dto,
-                                 Model model, BindingResult bindingResult,
+                                 BindingResult bindingResult,
+                                 Model model,
                                  Authentication authentication) {
+
         Employee employee = getLoggedEmployee(authentication);
         dto.setParkingId(employee.getParkingId());
-
 
         if (bindingResult.hasErrors()) {
             return "registerMotorcycle";
         }
 
-        try{
-            Motorcycle motorcycle = Mapper.toEntity(dto, Motorcycle.class);
+        try {
+            Motorcycle motorcycle = new Motorcycle();
+            motorcycle.setLicensePlate(dto.getLicensePlate());
+            motorcycle.setChassisNumber(dto.getChassisNumber());
+            motorcycle.setMechanicalCondition(dto.getMechanicalCondition());
+            motorcycle.setModel(dto.getModel());
+            motorcycle.setOperationalStatus(dto.getOperationalStatus());
+
+            Parking parking = new Parking();
+            parking.setId(dto.getParkingId());
+            motorcycle.setParking(parking);
 
             motorcycleService.save(motorcycle);
+
             model.addAttribute("success", "Moto cadastrada com sucesso!");
-            model.addAttribute("motorcycle", new MotorcycleRequest());
             return "redirect:/motorcycles/list";
+
         } catch (Exception ex) {
             model.addAttribute("errorMessage", ex.getMessage());
             model.addAttribute("motorcycle", dto);
             return "registerMotorcycle";
         }
-
     }
 
 

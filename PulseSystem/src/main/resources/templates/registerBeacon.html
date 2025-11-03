@@ -7,43 +7,62 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}" />
 </head>
 <body>
-<h2>Cadastro de Beacons</h2>
+<div class="form-container">
+    <h2>Cadastro de Beacons</h2>
 
-<form th:action="@{/beacons/register}" th:object="${beacon}" method="post">
-    <div>
-        <label>Código UUID:</label>
-        <input type="text" th:field="*{beaconCode}" required />
-        <div th:if="${#fields.hasErrors('beaconCode')}" style="color:red">
-            <p th:errors="*{beaconCode}"></p>
+    <!-- Mensagens gerais -->
+    <div th:if="${success}" class="success-message">
+        <p th:text="${success}"></p>
+    </div>
+
+    <div th:if="${errorMessage}" class="error-message">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <form th:action="@{/beacons/register}" th:object="${beacon}" method="post" class="horizontal-form">
+        <div class="form-row">
+            <div class="form-group">
+                <label>Código Beacon:</label>
+                <input type="text" th:field="*{beaconCode}" required
+                       class="form-input" />
+                <div th:if="${#fields.hasErrors('beaconCode')}" class="field-error">
+                    <span th:errors="*{beaconCode}"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Status do beacon:</label>
+                <select th:field="*{beaconStatus}" required class="form-input">
+                    <option value="">Selecione o status</option>
+                    <option th:value="ATIVO">Ativo</option>
+                    <option th:value="INATIVO">Inativo</option>
+                </select>
+                <div th:if="${#fields.hasErrors('beaconStatus')}" class="field-error">
+                    <span th:errors="*{beaconStatus}"></span>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div>
-        <label>Status do beacon:</label>
-        <select th:field="*{beaconStatus}" required>
-            <option th:value="ATIVO">Ativo</option>
-            <option th:value="INATIVO">Inativo</option>
-        </select>
-        <div th:if="${#fields.hasErrors('beaconStatus')}" style="color:red">
-            <p th:errors="*{beaconStatus}"></p>
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Cadastrar Beacon</button>
+            <a th:href="@{/beacons/list}" class="cancel-btn">Cancelar</a>
         </div>
-    </div>
-
-
-    <div class="buttons">
-        <button type="submit" class="btn-primary">Cadastrar</button>
-        <a th:href="@{/beacons/list}" class="cancel-btn">Cancelar</a>
-    </div>
-</form>
-
-<div th:if="${success}" style="color: green;">
-    <p th:text="${success}"></p>
+    </form>
 </div>
 
+<script>
+    // Foco no primeiro campo com erro
+    document.addEventListener('DOMContentLoaded', function() {
+        const firstError = document.querySelector('.field-error');
+        if (firstError) {
+            const input = firstError.previousElementSibling;
+            if (input && (input.classList.contains('form-input') || input.tagName === 'SELECT')) {
+                input.focus();
+                input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
 
-<div th:if="${errorMessage}" style="color: red;">
-    <p th:text="${errorMessage}"></p>
-</div>
-
+    });
+</script>
 </body>
 </html>

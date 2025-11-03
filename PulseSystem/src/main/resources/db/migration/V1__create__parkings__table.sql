@@ -7,5 +7,8 @@ CREATE TABLE parkings (
     postal_code VARCHAR(20) NOT NULL,
     complement VARCHAR(20),
     available_area BIGINT NOT NULL,
-    capacity BIGINT NOT NULL
+    capacity BIGINT NOT NULL,
+    structurePlan VARCHAR(500) NOT NULL,
+    floorPlan VARCHAR(500) NOT NULL,
+    mapPlan CLOB NOT NULL
 );

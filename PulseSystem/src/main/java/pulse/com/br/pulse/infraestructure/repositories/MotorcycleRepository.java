@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface MotorcycleRepository extends JpaRepository<Motorcycle, Long> {
     Motorcycle findByLicensePlate(String licensePlate);
-    List<Motorcycle> findByParkingId(Long parkingId);
-    List<Motorcycle> findByOperationalStatusAndParkingId(OperationStatus status, Long parkingId);
-    long countByParkingId(Long parkingId);
+    List<Motorcycle> findByParking_Id(Long parkingId);
+    List<Motorcycle> findByOperationalStatusAndParking_Id(OperationStatus status, Long parkingId);
+    long countByParking_Id(Long parkingId);
 }
