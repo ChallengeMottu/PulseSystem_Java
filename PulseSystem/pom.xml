@@ -135,9 +135,9 @@
                 <version>10.10.0</version>
                 <configuration>
 
-                    <url>jdbc:oracle:thin:@//oracle.fiap.com.br:1521/ORCL</url>
-                    <user>RM556690</user>
-                    <password>100506</password>
+                    <url>{urlConnection}</url>
+                    <user>{username}</user>
+                    <password>{password}</password>
 
 
                     <locations>
@@ -146,7 +146,7 @@
 
 
                     <cleanDisabled>false</cleanDisabled>
-                    <baselineOnMigrate>true</baselineOnMigrate>
+                    <baselineOnMigrate>false</baselineOnMigrate>
                 </configuration>
             </plugin>
 

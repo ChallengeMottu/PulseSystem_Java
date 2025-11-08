@@ -6,6 +6,6 @@ CREATE TABLE motorcycles (
                              operational_status VARCHAR2(50),
                              mechanical_condition VARCHAR2(50),
                              parking_id NUMBER NOT NULL,
-                             CONSTRAINT fk_motorcycles_parkings FOREIGN KEY (parking_id)
+                             CONSTRAINT fk_motorcycle_parking FOREIGN KEY (parking_id)
                                  REFERENCES parkings(id)
 );

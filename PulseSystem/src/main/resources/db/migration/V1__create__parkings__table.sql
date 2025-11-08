@@ -8,7 +8,7 @@ CREATE TABLE parkings (
                           complement VARCHAR2(20),
                           available_area NUMBER NOT NULL,
                           capacity NUMBER NOT NULL,
-                          structurePlan CLOB NOT NULL,
-                          floorPlan CLOB NOT NULL,
-                          mapPlan CLOB NOT NULL
+                          structure_plan CLOB NOT NULL,
+                          floor_plan CLOB NOT NULL,
+                          map_plan CLOB NOT NULL
 );
