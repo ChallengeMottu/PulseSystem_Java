@@ -125,12 +125,6 @@ cd PulseSystem_Java
 ```
 ou via IDE, executando a classe principal com @SpringBootApplication.
 
-Ao inicializar a aplicação, as migrations serão executas no banco H2, porém
-caso queira executar as migrations antes, rode:
-```bash
-mvn flyway:migrate
-```
-
 **4. Acesse o sistema no navegador, na página de login:**
 ```bash
 http://localhost:8080/login
