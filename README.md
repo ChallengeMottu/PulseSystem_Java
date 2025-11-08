@@ -16,7 +16,7 @@ das motos no espaço.
 - **Spring Security**
 - **Thymeleaf**
 - **Flyway**
-- **H2 Database**
+- **Oracle**
 - **Maven**
 
 ---
@@ -93,6 +93,22 @@ O sistema já vem com alguns usuários para teste:
 
 ---
 
+## ⚙️ Configuração de Banco de Dados e Migrations (Flyway & Hibernate)
+
+O PulseSystem utiliza Flyway para controle de versão do banco de dados, porém no ambiente atual de desenvolvimento o Flyway está desativado, e a criação/atualização das tabelas é realizada automaticamente pelo Hibernate, utilizando a configuração:
+
+```bash
+spring.jpa.hibernate.ddl-auto=update
+```
+
+Caso prefira usar o Flyway para criação do database, basta ativar ele no application.properties:
+```bash
+spring.flyway.enabled=true
+spring.jpa.hibernate.ddl-auto=none
+```
+
+---
+
 ## ▶️ Como rodar o projeto
 
 **1. Clone o repositório:**
@@ -132,13 +148,7 @@ O deploy do PulseSystem foi realizado na **Microsoft Azure**, utilizando os serv
 A aplicação Java foi publicada em um **Azure Web App**, que oferece um ambiente totalmente gerenciado para execução de aplicações web. Essa abordagem elimina a necessidade de configurações manuais de infraestrutura, permitindo foco total no desenvolvimento e manutenção da aplicação.
 
 ### Migração para Banco PaaS – Azure SQL Database  
-Para o ambiente em nuvem, o sistema deixou de utilizar o banco local H2 e passou a operar com um banco **PaaS** (Platform as a Service): o **Azure SQL Database**.  
-Essa mudança exigiu adaptações importantes, como:
-
-- Atualização das **dependências** da aplicação para suportar SQL Server em vez de H2.  
-- Ajustes na **configuração de conexão** utilizando string segura do Azure SQL.  
-- Adaptação das **migrations do Flyway**, garantindo que todas as tabelas e dados iniciais fossem criados diretamente no banco em nuvem.  
-- Ajustes de performance e dialeto SQL para compatibilidade com SQL Server.
+Para o ambiente em nuvem, o sistema deixou de utilizar o banco Oracle e passou a operar com um banco **PaaS** (Platform as a Service): o **Azure SQL Database**.  
 
 ---
 
