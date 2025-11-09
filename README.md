@@ -134,19 +134,6 @@ http://localhost:8080/login
 
 ---
 
-## 🌐 Deploy da Aplicação na Azure
-
-O deploy do PulseSystem foi realizado na **Microsoft Azure**, utilizando os serviços gerenciados da plataforma para garantir disponibilidade, segurança e escalabilidade do sistema em produção.
-
-### Azure Web App  
-A aplicação Java foi publicada em um **Azure Web App**, que oferece um ambiente totalmente gerenciado para execução de aplicações web. Essa abordagem elimina a necessidade de configurações manuais de infraestrutura, permitindo foco total no desenvolvimento e manutenção da aplicação.
-
-### Migração para Banco PaaS – Azure SQL Database  
-Para o ambiente em nuvem, o sistema deixou de utilizar o banco Oracle e passou a operar com um banco **PaaS** (Platform as a Service): o **Azure SQL Database**.  
-
----
-
-
 👥 Grupo Desenvolvedor
 
 - Gabriela Sousa Reis RM558830
